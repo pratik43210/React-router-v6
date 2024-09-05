@@ -1,11 +1,14 @@
 import {Link, Route, Routes} from 'react-router-dom'
 import Home from "./pages/Home.jsx"
-import BookList from "./pages/Booklist"
-import Book from "./pages/Book"
+import NotFound from "./pages/NotFound"
+import BookRoutes from './pages/BookRoutes.jsx'
 function App() {
 
   return (
     <>
+    <Routes>
+      <Route path="/books" element={<h2>Extra content</h2>}/>
+    </Routes>
       <ul>
         <li>
           <Link to="/">Home</Link> 
@@ -19,8 +22,8 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/books" element={<BookList/>}/>
-        <Route path="/books/:id" element={<Book/>}/>
+        <Route path="/books/*" element={<BookRoutes/>}/>
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
     </>
   )
